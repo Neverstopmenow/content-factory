@@ -5,7 +5,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 
 from config.settings import settings
-from bot.handlers import start, content, settings as settings_handler
+from bot.handlers import start, content, settings as settings_handler, chat
 
 logging.basicConfig(level=logging.INFO)
 
@@ -16,6 +16,7 @@ async def main():
 
     dp.include_router(start.router)
     dp.include_router(content.router)
+    dp.include_router(chat.router)
     dp.include_router(settings_handler.router)
 
     await dp.start_polling(bot)
